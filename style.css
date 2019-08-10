@@ -42,3 +42,8 @@ h2 {
 .cta img {
     height: 100%;
 }
+
+.logo {
+    height: 6em;
+    margin-bottom: 1em;
+}
