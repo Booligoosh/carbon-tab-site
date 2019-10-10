@@ -15,3 +15,28 @@
 <h1>Carbon Tab</h1>
 <h2>🌎🏭📈 Data about the climate crisis, in your new tab.</h2>
 <a class="cta" href="https://chrome.google.com/webstore/detail/carbon-tab/hdbbmlahkjjgopapilkbeohfaooipafa"><img src="badge-trans.png" alt="Available in the Chrome Web Store"></a>
+<div class="contributors">
+    <h3>Contributors</h3>
+</div>
+<a href="https://github.com/Booligoosh/carbon-tab" target="_blank" class="contribute-btn">Contribute on GitHub</a>
+
+<script>
+window.addEventListener(`DOMContentLoaded`, () => {
+    fetch(`https://api.github.com/repos/Booligoosh/carbon-tab/contributors`)
+        .then(r => r.json())
+        .then(async r => {
+            console.log(r)
+            for (let i = 0; i < r.length; i++) {
+                r[i].blog = (await getProfile(r[i])).blog || r[i].html_url
+                if (!(r[i].blog.startsWith(`http://`) || r[i].blog.startsWith(`https://`))) {
+                    r[i].blog = `http://${r[i].blog}`
+                }
+            }
+            document.querySelector(`.contributors`).innerHTML += r.filter(contributor => contributor.type === `User`).map(contributor => 
+            `<a href="${contributor.blog}" target="_blank"><img src="${contributor.avatar_url}" alt="${contributor.login}" title="${contributor.login}"></a>`).join(``)
+        })
+})
+function getProfile (user) {
+    return fetch(user.url).then(r => r.json())
+}
+</script>
