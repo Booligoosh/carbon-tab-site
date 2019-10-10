@@ -33,7 +33,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
                 }
             }
             document.querySelector(`.contributors`).innerHTML += r.filter(contributor => contributor.type === `User`).map(contributor => 
-            `<a href="${contributor.blog}" target="_blank"><img src="${contributor.avatar_url}" alt="${contributor.login}" title="${contributor.login}"></a>`).join(``)
+            `<a href="${contributor.blog}" target="_blank" rel="nofollow noreferrer noopener"><img src="${contributor.avatar_url}" alt="${contributor.login}" title="${contributor.login}"></a>`).join(``)
         })
 })
 function getProfile (user) {
