@@ -15,32 +15,59 @@ body {
   align-items: center;
   text-align: center;
 }
+@media screen and (max-width: 490px) {
+  body {
+    padding: 2em;
+  }
+}
 h1 {
   font-size: 6em;
   margin: 0;
   font-weight: 600;
 }
+@media screen and (max-width: 650px) {
+  h1 {
+    font-size: 4em;
+  }
+}
+
 h2 {
   font-size: 1.5em;
   margin: 0;
   margin-top: 1rem;
-  margin-bottom: 2rem;
   font-weight: normal;
+}
+
+.ctas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 2rem 0;
+}
+
+@media screen and (max-width: 710px) {
+  .ctas {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cta {
   border: none;
   border-radius: 10px;
-  background: white !important;
+  overflow: hidden;
   padding: 0;
   cursor: pointer;
   outline: none !important;
-  font-size: 1em;
-  height: 7em;
+  height: 80px;
+}
+
+.cta.firefox {
+  background-color: #109ad6;
 }
 
 .cta img {
   height: 100%;
+  width: auto;
 }
 
 .logo {
@@ -52,7 +79,6 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 5rem;
   height: 5.4rem;
 }
 
