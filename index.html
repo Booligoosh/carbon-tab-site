@@ -1,44 +1,82 @@
-<link rel="stylesheet" href="style.css">
-<link rel="shortcut icon" href="logo.png">
-<title>Carbon Tab &mdash; Data about the climate crisis, in your new tab.</title>
-<meta name="og:title" content="Carbon Tab">
-<meta name="description" content="See data about the climate crisis, in your new tab, so you'll never forget about it again. Built as part of the Climate Fixathon.">
-<meta name="og:description" content="Data about the climate crisis, in your new tab.">
-<meta name="og:image" content="https://carbon-tab.ethan.link/og-image.png">
-<meta name="twitter:image" content="https://carbon-tab.ethan.link/og-image.png">
-<meta name="twitter:site" content="@CarbonTab_">
-<meta name="twitter:creator" content="@CarbonTab_">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="keywords" content="Carbon Tab,carbon tab extension,extension,chrome extension,chrome,new tab,new tab page,co2,carbon,carbon dioxide,climate">
+<link rel="stylesheet" href="style.css" />
+<link rel="shortcut icon" href="logo.png" />
+<title>
+  Carbon Tab &mdash; Data about the climate crisis, in your new tab.
+</title>
+<meta name="og:title" content="Carbon Tab" />
+<meta
+  name="description"
+  content="See data about the climate crisis, in your new tab, so you'll never forget about it again. Built as part of the Climate Fixathon."
+/>
+<meta
+  name="og:description"
+  content="Data about the climate crisis, in your new tab."
+/>
+<meta name="og:image" content="https://carbon-tab.ethan.link/og-image.png" />
+<meta
+  name="twitter:image"
+  content="https://carbon-tab.ethan.link/og-image.png"
+/>
+<meta name="twitter:site" content="@CarbonTab_" />
+<meta name="twitter:creator" content="@CarbonTab_" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta
+  name="keywords"
+  content="Carbon Tab,carbon tab extension,extension,chrome extension,chrome,new tab,new tab page,co2,carbon,carbon dioxide,climate"
+/>
 <!-- Plausible Analytics -->
-<script async defer data-domain="carbon-tab.ethan.link" src="https://pl.carbon-tab.ethan.link/js/index.outbound-links.js"></script>
+<script
+  async
+  defer
+  data-domain="carbon-tab.ethan.link"
+  src="https://pl.carbon-tab.ethan.link/js/index.outbound-links.js"
+></script>
 
-<img class="logo" src="logo-web-safe.svg">
+<img class="logo" src="logo-web-safe.svg" />
 <h1>Carbon Tab</h1>
 <h2>🌎🏭📈 Data about the climate crisis, in your new tab.</h2>
-<a class="cta" href="https://chrome.google.com/webstore/detail/carbon-tab/hdbbmlahkjjgopapilkbeohfaooipafa"><img src="badge-trans.png" alt="Available in the Chrome Web Store"></a>
+<a
+  class="cta"
+  href="https://chrome.google.com/webstore/detail/carbon-tab/hdbbmlahkjjgopapilkbeohfaooipafa"
+  ><img src="badge-trans.png" alt="Available in the Chrome Web Store"
+/></a>
 <div class="contributors">
-    <h3>Contributors</h3>
+  <h3>Contributors</h3>
 </div>
-<a href="https://github.com/Booligoosh/carbon-tab" target="_blank" class="contribute-btn">Contribute on GitHub</a>
+<a
+  href="https://github.com/Booligoosh/carbon-tab"
+  target="_blank"
+  class="contribute-btn"
+  >Contribute on GitHub</a
+>
 
 <script>
-window.addEventListener(`DOMContentLoaded`, () => {
+  window.addEventListener(`DOMContentLoaded`, () => {
     fetch(`https://api.github.com/repos/Booligoosh/carbon-tab/contributors`)
-        .then(r => r.json())
-        .then(async r => {
-            console.log(r)
-            for (let i = 0; i < r.length; i++) {
-                r[i].blog = (await getProfile(r[i])).blog || r[i].html_url
-                if (!(r[i].blog.startsWith(`http://`) || r[i].blog.startsWith(`https://`))) {
-                    r[i].blog = `http://${r[i].blog}`
-                }
-            }
-            document.querySelector(`.contributors`).innerHTML += r.filter(contributor => contributor.type === `User`).map(contributor => 
-            `<a href="${contributor.blog}" target="_blank" rel="nofollow noreferrer noopener"><img src="${contributor.avatar_url}" alt="${contributor.login}" title="${contributor.login}"></a>`).join(``)
-        })
-})
-function getProfile (user) {
-    return fetch(user.url).then(r => r.json())
-}
+      .then((r) => r.json())
+      .then(async (r) => {
+        console.log(r);
+        for (let i = 0; i < r.length; i++) {
+          r[i].blog = (await getProfile(r[i])).blog || r[i].html_url;
+          if (
+            !(
+              r[i].blog.startsWith(`http://`) ||
+              r[i].blog.startsWith(`https://`)
+            )
+          ) {
+            r[i].blog = `http://${r[i].blog}`;
+          }
+        }
+        document.querySelector(`.contributors`).innerHTML += r
+          .filter((contributor) => contributor.type === `User`)
+          .map(
+            (contributor) =>
+              `<a href="${contributor.blog}" target="_blank" rel="nofollow noreferrer noopener"><img src="${contributor.avatar_url}" alt="${contributor.login}" title="${contributor.login}"></a>`
+          )
+          .join(``);
+      });
+  });
+  function getProfile(user) {
+    return fetch(user.url).then((r) => r.json());
+  }
 </script>
