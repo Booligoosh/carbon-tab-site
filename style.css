@@ -94,6 +94,7 @@ h2 {
   height: 3rem;
   border-radius: 50%;
   margin: 0.25rem;
+  color: transparent;
 }
 
 .contribute-btn {
